@@ -4,9 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "node index",
+    "build": "pkg index.js --targets win-x64 --output=./build/escape-room-science"
+  },
+  "bin": {
+    "escape-room": "./index.js"
+  },
+  "pkg": {
+    "scripts": "index.js"
   },
   "author": "Dor Tzur",
   "license": "UNLICENSED",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "pkg": "^4.4.2"
+  }
 }

@@ -5,27 +5,45 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const getCode = () => rl.question("What is the code? ", handleCode);
+const getUsername = () =>
+  rl.question("What is the username? ", handleUsernameCode);
+const getPassword = () =>
+  rl.question("What is the password? ", handlePasswordCode);
 const getResetCode = () => rl.question("", handleResetCode);
+//username: 5384
+//password: 3579
 
 const handleResetCode = answer => {
   if (answer === "pitpit4life") {
-    getCode();
+    getUsername();
   } else {
     getResetCode();
   }
 };
-const handleCode = answer => {
-  if (answer === "1304") {
-    console.log(`Code is correct. Secret is 5050`);
+
+const handleUsernameCode = answer => {
+  if (answer === "5384") {
+    console.log('username is correct');
+    getPassword();
+  } else {
+    console.log("Incorrect code. Please try again.");
+    getUsername();
+  }
+};
+
+const handlePasswordCode = answer => {
+  if (answer === "3579") {
+    console.log(`Success!!!`);
+    console.log(`CODE IS: 1173`);
     getResetCode();
   } else {
     console.log("Incorrect code. Please try again.");
-    getCode();
+    getPassword();
   }
 };
+
 process.on("beforeExit", () => {
   rl.close();
 });
 
-getCode();
+getUsername();
